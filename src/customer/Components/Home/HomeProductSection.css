@@ -1,0 +1,6 @@
+/* Custom spacing and animation scaling for storefront carousel items */
+.alice-carousel__stage-item {
+  padding-left: 4px;
+  padding-right: 4px;
+  transition: transform 0.3s ease-in-out;
+}

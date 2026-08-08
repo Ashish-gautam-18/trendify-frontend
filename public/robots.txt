@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /cart
+Disallow: /checkout
+Disallow: /admin
+Disallow: /account
+Disallow: /api/
+
+Sitemap: https://trendyfy.com
