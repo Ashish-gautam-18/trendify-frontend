@@ -36,16 +36,14 @@ export default function AddDeliveryAddressForm({ handleNext }) {
       mobile: data.get("phoneNumber"),
     };
 
-    // FIX: dispatch ka result store kiya aur check kiya ki order sach me bana ya nahi.
-    // Pehle yeh check nahi hota tha, isliye order fail hone par bhi handleNext() chal
-    // jata tha aur user blank Order Summary page par pahunch jata tha.
     const res = await dispatch(createOrder({ address, jwt, navigate }));
 
     if (res?.payload?.id) {
       handleNext(res.payload.id);
     } else {
       setErrorMsg(
-        res?.payload || "Order create nahi ho paya. Kripya dobara koshish karein."
+        res?.payload ||
+          "Order create nahi ho paya. Kripya dobara koshish karein.",
       );
     }
   };
@@ -60,13 +58,15 @@ export default function AddDeliveryAddressForm({ handleNext }) {
       handleNext(res.payload.id);
     } else {
       setErrorMsg(
-        res?.payload || "Order create nahi ho paya. Kripya dobara koshish karein."
+        res?.payload ||
+          "Order create nahi ho paya. Kripya dobara koshish karein.",
       );
     }
   };
 
   return (
-    <Grid container spacing={4}>
+    // Spacing optimization configured perfectly for both display bounds
+    <Grid container spacing={4} className="overflow-hidden">
       {/* FIX: Error message dikhane ke liye */}
       {errorMsg && (
         <Grid item xs={12}>
@@ -74,19 +74,26 @@ export default function AddDeliveryAddressForm({ handleNext }) {
         </Grid>
       )}
 
-      {/* Left Column View: Loops out all historically saved user shipment profiles address logs */}
+      {/* Left Column View: Loops out saved address profiles logs - Rendered structurally always to match active states */}
       <Grid item xs={12} lg={5}>
-        <Box className="border rounded-md shadow-md h-[30.5rem] overflow-y-auto bg-white">
-          {auth.user?.addresses?.map((item) => (
+        <Box
+          className="border rounded-md shadow-md overflow-y-auto bg-white"
+          sx={{
+            height: { xs: "auto", md: "30.5rem" },
+            maxHeight: { xs: "18rem", md: "30.5rem" },
+            p: 1,
+          }}
+        >
+          {auth?.user?.addresses?.map((item, idx) => (
             <div
-              key={item.id || item.zipCode}
-              className="p-5 py-7 border-b cursor-default hover:bg-gray-50 transition-colors"
+              key={item?.id || item?.zipCode || `address-${idx}`}
+              className="p-4 sm:p-5 py-5 sm:py-7 border-b cursor-default hover:bg-gray-50 transition-colors"
             >
               <AddressCard address={item} />
 
               <Box sx={{ mt: 2 }}>
                 <Button
-                  size="large"
+                  size="medium"
                   variant="contained"
                   color="secondary"
                   type="button"
@@ -94,6 +101,7 @@ export default function AddDeliveryAddressForm({ handleNext }) {
                     event.stopPropagation();
                     handleCreateOrder(item);
                   }}
+                  sx={{ width: { xs: "100%", sm: "auto" } }}
                 >
                   Delivered Here
                 </Button>
@@ -103,11 +111,11 @@ export default function AddDeliveryAddressForm({ handleNext }) {
         </Box>
       </Grid>
 
-      {/* Right Column View: Structured intake form framework creating new shipment profiles */}
+      {/* Right Column View: Structured intake form layout */}
       <Grid item xs={12} lg={7}>
-        <Box className="border rounded-md shadow-md p-5 bg-white">
+        <Box className="border rounded-md shadow-md p-4 sm:p-5 bg-white">
           <form onSubmit={handleSubmit}>
-            <Grid container spacing={3}>
+            <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
                   required
@@ -116,6 +124,7 @@ export default function AddDeliveryAddressForm({ handleNext }) {
                   label="First Name"
                   fullWidth
                   autoComplete="given-name"
+                  size="small"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -126,6 +135,7 @@ export default function AddDeliveryAddressForm({ handleNext }) {
                   label="Last Name"
                   fullWidth
                   autoComplete="family-name"
+                  size="small"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -138,6 +148,7 @@ export default function AddDeliveryAddressForm({ handleNext }) {
                   autoComplete="shipping address"
                   multiline
                   rows={4}
+                  size="small"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -148,6 +159,7 @@ export default function AddDeliveryAddressForm({ handleNext }) {
                   label="City"
                   fullWidth
                   autoComplete="shipping address-level2"
+                  size="small"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -157,6 +169,7 @@ export default function AddDeliveryAddressForm({ handleNext }) {
                   name="state"
                   label="State/Province/Region"
                   fullWidth
+                  size="small"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -167,6 +180,7 @@ export default function AddDeliveryAddressForm({ handleNext }) {
                   label="Zip / Postal code"
                   fullWidth
                   autoComplete="shipping postal-code"
+                  size="small"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -177,11 +191,15 @@ export default function AddDeliveryAddressForm({ handleNext }) {
                   label="Phone Number"
                   fullWidth
                   autoComplete="tel"
+                  size="small"
                 />
               </Grid>
               <Grid item xs={12}>
                 <Button
-                  sx={{ padding: ".9rem 1.5rem" }}
+                  sx={{
+                    padding: { xs: ".6rem 1.2rem", sm: ".9rem 1.5rem" },
+                    width: { xs: "100%", sm: "auto" },
+                  }}
                   size="large"
                   type="submit"
                   variant="contained"
