@@ -364,13 +364,13 @@ export default function Navigation() {
               </button>
 
               {/* Centralized Brand Trademark Identity Metadata Display */}
-              <div className="ml-4 flex lg:ml-0 items-center">
+             <div className="ml-4 flex lg:ml-0 items-center flex-shrink-0">
                 <Link to="/" className="flex items-center">
                   <span className="sr-only">Trendyfy Clothing</span>
                   <img
                     src="/images/logos/logo.png"
                     alt="Trendyfy Store Logo"
-                    className="h-9 w-auto mr-2 object-contain"
+                    className="h-9 w-9 mr-2 object-contain flex-shrink-0"
                   />
                   <span className="font-bold text-xl text-gray-900 tracking-tight hidden sm:block">
                     Trendyfy
