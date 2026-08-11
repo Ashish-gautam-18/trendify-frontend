@@ -22,7 +22,7 @@ import { findProducts } from "../../../../Redux/Customers/Product/Action";
 import { Backdrop, CircularProgress } from "@mui/material";
 
 // Local dataset bindings for runtime fallback check
-import { mensShoesPage1 } from "../../../../Data/shoes"; 
+import { mensShoesPage1 } from "../../../../Data/shoes";
 import { gounsPage1 } from "../../../../Data/Gouns/gouns";
 import { kurtaPage1 } from "../../../../Data/Kurta/kurta";
 
@@ -131,7 +131,11 @@ export default function Product() {
       <div>
         {/* Mobile filter dialog */}
         <Transition.Root show={mobileFiltersOpen} as={Fragment}>
-          <Dialog as="div" className="relative z-40 lg:hidden" onClose={setMobileFiltersOpen}>
+          <Dialog
+            as="div"
+            className="relative z-40 lg:hidden"
+            onClose={setMobileFiltersOpen}
+          >
             <Transition.Child
               as={Fragment}
               enter="transition-opacity ease-linear duration-300"
@@ -156,7 +160,9 @@ export default function Product() {
               >
                 <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
                   <div className="flex items-center justify-between px-4">
-                    <h2 className="text-lg font-medium text-gray-900">Filters</h2>
+                    <h2 className="text-lg font-medium text-gray-900">
+                      Filters
+                    </h2>
                     <button
                       type="button"
                       className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
@@ -168,21 +174,40 @@ export default function Product() {
 
                   <form className="mt-4 border-t border-gray-200">
                     {filters.map((section) => (
-                      <Disclosure as="div" key={section.id} className="border-t border-gray-200 px-4 py-6">
+                      <Disclosure
+                        as="div"
+                        key={section.id}
+                        className="border-t border-gray-200 px-4 py-6"
+                      >
                         {({ open }) => (
                           <>
                             <h3 className="-mx-2 -my-3 flow-root">
                               <Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
-                                <span className="font-medium text-gray-900">{section.name}</span>
+                                <span className="font-medium text-gray-900">
+                                  {section.name}
+                                </span>
                                 <span className="ml-6 flex items-center">
-                                  {open ? <MinusIcon className="h-5 w-5" aria-hidden="true" /> : <PlusIcon className="h-5 w-5" aria-hidden="true" />}
+                                  {open ? (
+                                    <MinusIcon
+                                      className="h-5 w-5"
+                                      aria-hidden="true"
+                                    />
+                                  ) : (
+                                    <PlusIcon
+                                      className="h-5 w-5"
+                                      aria-hidden="true"
+                                    />
+                                  )}
                                 </span>
                               </Disclosure.Button>
                             </h3>
                             <Disclosure.Panel className="pt-6">
                               <div className="space-y-6">
                                 {section.options.map((option, optionIdx) => (
-                                  <div key={option.value} className="flex items-center">
+                                  <div
+                                    key={option.value}
+                                    className="flex items-center"
+                                  >
                                     <input
                                       id={`filter-mobile-${section.id}-${optionIdx}`}
                                       name={`${section.id}[]`}
@@ -190,9 +215,14 @@ export default function Product() {
                                       type="checkbox"
                                       defaultChecked={option.checked}
                                       className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                                      onChange={() => handleFilter(option.value, section.id)}
+                                      onChange={() =>
+                                        handleFilter(option.value, section.id)
+                                      }
                                     />
-                                    <label htmlFor={`filter-mobile-${section.id}-${optionIdx}`} className="ml-3 min-w-0 flex-1 text-gray-500">
+                                    <label
+                                      htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
+                                      className="ml-3 min-w-0 flex-1 text-gray-500"
+                                    >
                                       {option.label}
                                     </label>
                                   </div>
@@ -212,14 +242,19 @@ export default function Product() {
 
         <main className="mx-auto px-4 lg:px-14">
           <div className="flex items-baseline justify-between border-b border-gray-200 pb-6">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900">Products</h1>
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900">
+              Products
+            </h1>
 
             <div className="flex items-center">
               <Menu as="div" className="relative inline-block text-left">
                 <div>
                   <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
                     Sort
-                    <ChevronDownIcon className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500" aria-hidden="true" />
+                    <ChevronDownIcon
+                      className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                      aria-hidden="true"
+                    />
                   </Menu.Button>
                 </div>
 
@@ -240,9 +275,11 @@ export default function Product() {
                             <p
                               onClick={() => handleSortChange(option.query)}
                               className={classNames(
-                                option.current ? "font-medium text-gray-900" : "text-gray-500",
+                                option.current
+                                  ? "font-medium text-gray-900"
+                                  : "text-gray-500",
                                 active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm cursor-pointer"
+                                "block px-4 py-2 text-sm cursor-pointer",
                               )}
                             >
                               {option.name}
@@ -255,7 +292,10 @@ export default function Product() {
                 </Transition>
               </Menu>
 
-              <button type="button" className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
+              <button
+                type="button"
+                className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7"
+              >
                 <Squares2X2Icon className="h-5 w-5" aria-hidden="true" />
               </button>
               <button
@@ -268,28 +308,49 @@ export default function Product() {
             </div>
           </div>
           <section aria-labelledby="products-heading" className="pb-24 pt-6">
-            <h2 id="products-heading" className="sr-only">Products</h2>
+            <h2 id="products-heading" className="sr-only">
+              Products
+            </h2>
 
             <div>
               <h2 className="py-5 font-semibold opacity-60 text-lg">Filters</h2>
               <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
                 <form className="hidden lg:block border rounded-md p-5">
                   {filters.map((section) => (
-                    <Disclosure as="div" key={section.id} className="border-b border-gray-200 py-6">
+                    <Disclosure
+                      as="div"
+                      key={section.id}
+                      className="border-b border-gray-200 py-6"
+                    >
                       {({ open }) => (
                         <>
                           <h3 className="-my-3 flow-root">
                             <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
-                              <span className="font-medium text-gray-900">{section.name}</span>
+                              <span className="font-medium text-gray-900">
+                                {section.name}
+                              </span>
                               <span className="ml-6 flex items-center">
-                                {open ? <MinusIcon className="h-5 w-5" aria-hidden="true" /> : <PlusIcon className="h-5 w-5" aria-hidden="true" />}
+                                {open ? (
+                                  <MinusIcon
+                                    className="h-5 w-5"
+                                    aria-hidden="true"
+                                  />
+                                ) : (
+                                  <PlusIcon
+                                    className="h-5 w-5"
+                                    aria-hidden="true"
+                                  />
+                                )}
                               </span>
                             </Disclosure.Button>
                           </h3>
                           <Disclosure.Panel className="pt-6">
                             <div className="space-y-4">
                               {section.options.map((option, optionIdx) => (
-                                <div key={option.value} className="flex items-center">
+                                <div
+                                  key={option.value}
+                                  className="flex items-center"
+                                >
                                   <input
                                     id={`filter-${section.id}-${optionIdx}`}
                                     name={`${section.id}[]`}
@@ -297,9 +358,14 @@ export default function Product() {
                                     type="checkbox"
                                     defaultChecked={option.checked}
                                     className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                                    onChange={() => handleFilter(option.value, section.id)}
+                                    onChange={() =>
+                                      handleFilter(option.value, section.id)
+                                    }
                                   />
-                                  <label htmlFor={`filter-${section.id}-${optionIdx}`} className="ml-3 text-sm text-gray-600">
+                                  <label
+                                    htmlFor={`filter-${section.id}-${optionIdx}`}
+                                    className="ml-3 text-sm text-gray-600"
+                                  >
                                     {option.label}
                                   </label>
                                 </div>
@@ -311,14 +377,30 @@ export default function Product() {
                     </Disclosure>
                   ))}
                   {singleFilter.map((section) => (
-                    <Disclosure as="div" key={section.id} className="border-b border-gray-200 py-6">
+                    <Disclosure
+                      as="div"
+                      key={section.id}
+                      className="border-b border-gray-200 py-6"
+                    >
                       {({ open }) => (
                         <>
                           <h3 className="-my-3 flow-root">
                             <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
-                              <span className="font-medium text-gray-900">{section.name}</span>
+                              <span className="font-medium text-gray-900">
+                                {section.name}
+                              </span>
                               <span className="ml-6 flex items-center">
-                                {open ? <MinusIcon className="h-5 w-5" aria-hidden="true" /> : <PlusIcon className="h-5 w-5" aria-hidden="true" />}
+                                {open ? (
+                                  <MinusIcon
+                                    className="h-5 w-5"
+                                    aria-hidden="true"
+                                  />
+                                ) : (
+                                  <PlusIcon
+                                    className="h-5 w-5"
+                                    aria-hidden="true"
+                                  />
+                                )}
                               </span>
                             </Disclosure.Button>
                           </h3>
@@ -331,7 +413,9 @@ export default function Product() {
                                     value={option.value}
                                     control={<Radio />}
                                     label={option.label}
-                                    onChange={(e) => handleRadioFilterChange(e, section.id)}
+                                    onChange={(e) =>
+                                      handleRadioFilterChange(e, section.id)
+                                    }
                                   />
                                 ))}
                               </RadioGroup>
@@ -345,14 +429,17 @@ export default function Product() {
 
                 {/* Product Grid Layer with dynamic / local fallback checks */}
                 <div className="lg:col-span-4 w-full">
-                  <div className="flex flex-wrap justify-center bg-white border py-5 rounded-md">
-                    {(param.lavelThree === "shoes" 
-                      ? mensShoesPage1 
-                      : (param.lavelThree === "gowns" || param.lavelThree === "gouns")
-                      ? gounsPage1
-                      : (param.lavelThree === "women_kurta" || param.lavelThree === "women_kurtas" || param.lavelThree === "kurta")
-                      ? kurtaPage1
-                      : (customersProduct?.products?.content || [])
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 bg-white border p-3 sm:p-5 rounded-md">
+                    {(param.lavelThree === "shoes"
+                      ? mensShoesPage1
+                      : param.lavelThree === "gowns" ||
+                          param.lavelThree === "gouns"
+                        ? gounsPage1
+                        : param.lavelThree === "women_kurta" ||
+                            param.lavelThree === "women_kurtas" ||
+                            param.lavelThree === "kurta"
+                          ? kurtaPage1
+                          : customersProduct?.products?.content || []
                     ).map((item, index) => (
                       <ProductCard key={item.id || index} product={item} />
                     ))}
@@ -364,7 +451,7 @@ export default function Product() {
         </main>
 
         {/* pagination section */}
-        <section className="w-full px-[3.6rem]">
+       <section className="w-full px-4 sm:px-8 lg:px-[3.6rem]">
           <div className="mx-auto px-4 py-5 flex justify-center shadow-lg border rounded-md">
             <Pagination
               count={customersProduct.products?.totalPages || 1}
@@ -385,4 +472,3 @@ export default function Product() {
     </div>
   );
 }
-

@@ -54,8 +54,8 @@ const ProductCard = ({ product }) => {
     : (product.disscount || product.discount || "0% off");
 
   return (
-   <div onClick={handleNavigate} className='productCard w-[15rem] border m-3 transition-all cursor-pointer rounded-lg overflow-hidden shadow-sm hover:shadow-md'>
-    <div className='h-[20rem] bg-gray-50 flex items-center justify-center relative'>
+  <div onClick={handleNavigate} className='productCard w-full border transition-all cursor-pointer rounded-lg overflow-hidden shadow-sm hover:shadow-md'>
+    <div className='h-40 sm:h-56 md:h-72 lg:h-80 bg-gray-50 flex items-center justify-center relative'>
         <img 
           className='h-full w-full object-cover object-left-top' 
           src={imageUrl} 
