@@ -28,11 +28,12 @@ const HomeProductSection = ({ section, data, categoryPath }) => {
   const syncActiveIndex = ({ item }) => setActiveIndex(item);
 
   // Dynamic responsive screen matrix defining viewport item distributions
-  const responsiveLayoutBreakpoints = {
-    0: { items: 2, itemsFit: "contain" },
-    568: { items: 3, itemsFit: "contain" },
-    1024: { items: 5.5, itemsFit: "contain" },
-  };
+ const responsiveLayoutBreakpoints = {
+  0: { items: 3, itemsFit: "contain" },      // mobile: 2 → 3
+  480: { items: 3.3, itemsFit: "contain" },  // small mobile, thoda peek dikhe
+  768: { items: 4, itemsFit: "contain" },
+  1024: { items: 5.5, itemsFit: "contain" },
+};
 
   // Compile individual product profiles data objects securely into list components array
   const catalogCarouselItems = data?.slice(0, 10).map((productItem, index) => (

@@ -32,10 +32,10 @@ const HomeProductCard = ({ product, categoryPath }) => {
   return (
     <div
       onClick={handleNavigate}
-      className="cursor-pointer flex flex-col items-center bg-white rounded-lg shadow-lg overflow-hidden w-[15rem] mx-3 transition-transform duration-300 hover:scale-105 border border-gray-100"
+      className="cursor-pointer flex flex-col items-center bg-white rounded-lg shadow-lg overflow-hidden w-full mx-1 sm:mx-2 transition-transform duration-300 hover:scale-105 border border-gray-100"
     >
       {/* Container wrapper frame hosting the clean asset image graphics layout */}
-      <div className="h-[13rem] w-[10rem] mt-3 flex items-center justify-center overflow-hidden">
+      <div className="h-32 w-full sm:h-52 mt-3 flex items-center justify-center overflow-hidden">
         <img
           className="object-cover object-top w-full h-full"
           src={getImageUrl()} 
