@@ -96,7 +96,11 @@ export default function Navigation() {
     <div className="bg-white pb-10">
       {/* Handheld Device Responsive Sidebar Overlay Menu */}
       <Transition.Root show={open} as={Fragment}>
-        <Dialog as="div" className="relative z-40 lg:hidden" onClose={setOpen}>
+        <Dialog
+          as="div"
+          className="relative z-[100] lg:hidden"
+          onClose={setOpen}
+        >
           <Transition.Child
             as={Fragment}
             enter="transition-opacity ease-linear duration-300"
@@ -106,10 +110,10 @@ export default function Navigation() {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
+            <div className="fixed inset-0 bg-black bg-opacity-60" />
           </Transition.Child>
 
-          <div className="fixed inset-0 z-40 flex">
+          <div className="fixed inset-0 z-[100] flex">
             <Transition.Child
               as={Fragment}
               enter="transition ease-in-out duration-300 transform"
@@ -119,7 +123,7 @@ export default function Navigation() {
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <Dialog.Panel className="relative flex w-full max-w-xs flex-col overflow-y-auto bg-white pb-12 shadow-xl">
+              <Dialog.Panel className="relative flex w-full sm:max-w-sm flex-col overflow-y-auto bg-white pb-12 shadow-xl">
                 <div className="flex px-4 pb-2 pt-5">
                   <button
                     type="button"
@@ -298,16 +302,12 @@ export default function Navigation() {
 
                 {/* Brand Localization Settings */}
                 <div className="border-t border-gray-200 px-4 py-6">
-                  <a href="/" className="-m-2 flex items-center p-2">
-                    <img
-                      src="https://tailwindui.com"
-                      alt="India Flag"
-                      className="block h-auto w-5 flex-shrink-0"
-                    />
+                  <div className="-m-2 flex items-center p-2">
+                    <span className="text-lg flex-shrink-0">🇮🇳</span>
                     <span className="ml-3 block text-base font-medium text-gray-900">
                       INR (₹)
                     </span>
-                  </a>
+                  </div>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
@@ -364,7 +364,7 @@ export default function Navigation() {
               </button>
 
               {/* Centralized Brand Trademark Identity Metadata Display */}
-             <div className="ml-4 flex lg:ml-0 items-center flex-shrink-0">
+              <div className="ml-4 flex lg:ml-0 items-center flex-shrink-0">
                 <Link to="/" className="flex items-center">
                   <span className="sr-only">Trendyfy Clothing</span>
                   <img
