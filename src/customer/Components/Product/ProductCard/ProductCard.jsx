@@ -54,27 +54,27 @@ const ProductCard = ({ product }) => {
     : (product.disscount || product.discount || "0% off");
 
   return (
-  <div onClick={handleNavigate} className='productCard w-full border transition-all cursor-pointer rounded-lg overflow-hidden shadow-sm hover:shadow-md'>
-    <div className='h-40 sm:h-56 md:h-72 lg:h-80 bg-gray-50 flex items-center justify-center relative'>
+   <div onClick={handleNavigate} className='productCard w-full border m-1 sm:m-3 transition-all cursor-pointer rounded-lg overflow-hidden shadow-sm hover:shadow-md'>
+    <div className='h-40 sm:h-72 md:h-[20rem] bg-gray-50 flex items-center justify-center relative'>
         <img 
           className='h-full w-full object-cover object-left-top' 
           src={imageUrl} 
           alt={title} 
           loading="lazy"
         />
-        <span className="absolute text-xs text-gray-400 bottom-2 right-2">Trendify Shop</span>
+        <span className="absolute text-[10px] sm:text-xs text-gray-400 bottom-2 right-2">Trendify Shop</span>
     </div>
-    <div className='textPart bg-white p-3 '>
+    <div className='textPart bg-white p-2 sm:p-3'>
         <div>
-            <p className='font-bold opacity-60'>{brand}</p>
-            <p className='truncate text-sm text-gray-700'>{title}</p>
-            <p className='font-semibold opacity-50 text-xs mt-1'>{color}</p>
+            <p className='font-bold opacity-60 text-sm sm:text-base'>{brand}</p>
+            <p className='truncate text-xs sm:text-sm text-gray-700'>{title}</p>
+            <p className='font-semibold opacity-50 text-[10px] sm:text-xs mt-1'>{color}</p>
         </div>
         
         <div className='flex space-x-2 items-center mt-2'>
-            <p className='font-semibold'>{displayDiscountedPrice}</p>
-            <p className='opacity-50 line-through text-sm'>{displayOriginalPrice}</p>
-            <p className='text-green-600 font-semibold text-xs'>{displayDiscountPercent}</p>
+            <p className='font-semibold text-sm sm:text-base'>{displayDiscountedPrice}</p>
+            <p className='opacity-50 line-through text-xs sm:text-sm'>{displayOriginalPrice}</p>
+            <p className='text-green-600 font-semibold text-[10px] sm:text-xs'>{displayDiscountPercent}</p>
         </div>
     </div>
    </div>
