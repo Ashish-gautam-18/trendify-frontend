@@ -8,6 +8,7 @@
   ## -> Designed the full order lifecycle (Pending → Confirmed → Shipped → Delivered/Cancelled) with an Admin panel to track and update order status
   ## -> Built an admin analytics dashboard showing sales, revenue, and customer insights using Redux and chart-based visualizations. 
   ## -> Integrated RazorPay payment gateway on the backend, consumed via Axios API calls from the React frontend, and added a ratings-and reviews system for customer feedback. 
+  ## -> Containerized and deployed the application on Render using a custom Dockerfile. 
 ## Home Page
 
 
