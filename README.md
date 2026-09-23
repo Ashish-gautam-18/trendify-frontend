@@ -3,8 +3,7 @@
    ## -> Built a full online shopping platform end-to-end — designed the database, built REST APIs with Spring Boot, and built a responsive UI 
   with React.js and Vite. 
   ## -> Implemented secure login with Spring Security and JWT, with role-based access separating Admin and Customer views.
-  ## -> Built a dynamic product catalog supporting advanced multi-parameter filtering (category, size, color) and real-time search, improving 
-user search efficiency by 35%.  
+  ## -> Built a dynamic product catalog supporting advanced multi-parameter filtering (category, size, color) and real-time search, improving user search efficiency by 35%.  
   ## -> Added a shopping cart and multi-step checkout with saved delivery addresses.
   ## -> 
 
