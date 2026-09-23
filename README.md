@@ -5,7 +5,7 @@
   ## -> Implemented secure login with Spring Security and JWT, with role-based access separating Admin and Customer views.
   ## -> Built a dynamic product catalog supporting advanced multi-parameter filtering (category, size, color) and real-time search, improving user search efficiency by 35%.  
   ## -> Added a shopping cart and multi-step checkout with saved delivery addresses.
-  ## -> 
+  ## -> Designed the full order lifecycle (Pending → Confirmed → Shipped → Delivered/Cancelled) with an Admin panel to track and update order status
 
 ## Home Page
 
