@@ -9,7 +9,9 @@
   ## -> Built an admin analytics dashboard showing sales, revenue, and customer insights using Redux and chart-based visualizations. 
   ## -> Integrated RazorPay payment gateway on the backend, consumed via Axios API calls from the React frontend, and added a ratings-and reviews system for customer feedback. 
   ## -> Containerized and deployed the application on Render using a custom Dockerfile. 
+
 ## Home Page
-
-
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/f7007434-6769-4908-9c86-9ba6830cd269" />
+
+## Home Page Footer
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/3dbbdd0f-7590-4a78-95c6-54de7f1ee07d" />
